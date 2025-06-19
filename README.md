@@ -76,7 +76,7 @@ This might not be useful to everyone, but for devs managing multiple GitHub acco
 
 I've submitted this as a feature request to GitHub.
 
-* **[Discussion Link](https://lnkd.in/gmz-ZZGr)**
+* **[Discussion Link](https://github.com/orgs/community/discussions/163410)**
   Jump in, upvote, and add your use case if you want GitHub to support this natively.
 
 ---
@@ -93,5 +93,5 @@ If GitHub doesn’t implement this, I’ll build a minimal UI:
 
 ## 📎 Links
 
-* 🔗 [Script Repository](https://lnkd.in/gEhAzxND)
-* 💬 [GitHub Discussion](https://lnkd.in/gmz-ZZGr)
+* 🔗 [Script Repository](https://github.com/MishraShardendu22/Go-TransferScript)
+* 💬 [GitHub Discussion](https://github.com/orgs/community/discussions/163410)
