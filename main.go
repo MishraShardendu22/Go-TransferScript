@@ -44,6 +44,7 @@ func main() {
 	newUser := "MishraShardendu22"
 	allRepos := []string{
 		"Tinder-LLD",
+		"Go-TransferScript",
 		// "Zepto-LLD",
 		// "DiscountCoupon-LLD",
 		// "PaymentGateway-LLD",
