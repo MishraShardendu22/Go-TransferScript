@@ -15,21 +15,28 @@ func transferRepo(wg *sync.WaitGroup, client *resty.Client, originalUser, newUse
 	defer wg.Done()
 	url := "https://api.github.com/repos/" + originalUser + "/" + repo + "/transfer"
 
+	fmt.Println("[START] Transferring:", repo)
+
 	res, err := client.R().
 		SetBody(map[string]string{
 			"new_owner": newUser,
 			"new_name":  repo,
 		}).
 		SetHeader("Accept", "application/vnd.github+json").
-		SetHeader("Authorization", "Bearer "+os.Getenv("GITHUB_TOEKN_CLASSIC")).
+		SetHeader("Authorization", "Bearer "+os.Getenv("GITHUB_TOKEN_CLASSIC")).
 		SetHeader("X-GitHub-Api-Version", "2022-11-28").
 		Post(url)
 
 	if err != nil {
-		fmt.Println("Error transferring", repo, ":", err)
+		fmt.Println("[ERROR] "+repo+":", err)
 		return
 	}
-	fmt.Println("Transferred", repo, "-", res.Status())
+
+	if res.StatusCode() != 202 {
+		fmt.Println("[FAIL] "+repo+":", res.StatusCode(), "-", res.String())
+	} else {
+		fmt.Println("[SUCCESS] "+repo+":", res.Status())
+	}
 }
 
 func main() {
@@ -45,9 +52,9 @@ func main() {
 	allRepos := []string{
 		"Tinder-LLD",
 		"Go-TransferScript",
-		// "Zepto-LLD",
-		// "DiscountCoupon-LLD",
-		// "PaymentGateway-LLD",
+		"Zepto-LLD",
+		"DiscountCoupon-LLD",
+		"PaymentGateway-LLD",
 	}
 
 	client := resty.New().
